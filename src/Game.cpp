@@ -1,4 +1,5 @@
 #include <Game.h>
+#include <TextureManager.h>
 
 SDL_Window *Game::window = nullptr;
 SDL_Renderer *Game::renderer = nullptr;
@@ -50,6 +51,7 @@ void Game::render() {
 };
 
 void Game::clean() {
+    TextureManager::destroyTextures();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 };
