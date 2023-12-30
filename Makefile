@@ -17,3 +17,4 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 .PHONY: clean
 clean:
 	rm -rf $(OBJDIR)/*.o darkwood-quest.exe
+

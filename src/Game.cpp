@@ -1,5 +1,6 @@
 #include <Game.h>
 #include <TextureManager.h>
+#include <Tilemap.h>
 
 SDL_Window *Game::window = nullptr;
 SDL_Renderer *Game::renderer = nullptr;
