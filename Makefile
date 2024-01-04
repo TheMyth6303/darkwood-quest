@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall -I include -I SDL/include
-LDFLAGS = -L lib -L SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image
+LDFLAGS = -L SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image
 
 SRCDIR = src
 OBJDIR = obj

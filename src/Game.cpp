@@ -1,16 +1,23 @@
+#include <Components.h>
+#include <ECS.h>
 #include <Game.h>
 #include <TextureManager.h>
 #include <Tilemap.h>
+#include <iostream>
 
 SDL_Window *Game::window = nullptr;
 SDL_Renderer *Game::renderer = nullptr;
+
+Manager manager;
 
 Game::Game(){};
 
 Game::~Game(){};
 
 void Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen) {
+    std::cout << 1;
     isRunning = true;
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cout << "Could not initialize SDL video subsystem" << std::endl;
         isRunning = false;
@@ -44,7 +51,7 @@ void Game::handleEvents() {
     }
 };
 
-void Game::update(){};
+void Game::update() { manager.update(); };
 
 void Game::render() {
     SDL_RenderClear(renderer);

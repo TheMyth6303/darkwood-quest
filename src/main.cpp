@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     int frameTime;
 
     game = new Game();
-    game->init("Darkwood Quest", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, true);
+    game->init("Darkwood Quest", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, false);
 
     while (game->running()) {
         frameStart = SDL_GetTicks();
