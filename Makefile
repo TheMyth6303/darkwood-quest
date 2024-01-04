@@ -5,7 +5,7 @@ LDFLAGS = -L SDL/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image
 SRCDIR = src
 OBJDIR = obj
 
-SRCS = $(wildcard $(SRCDIR)/*.cpp)
+SRCS = $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(SRCDIR)/components/*.cpp)
 OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
 
 darkwood-quest: $(OBJS)
@@ -16,5 +16,5 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJDIR)/*.o darkwood-quest.exe
+	rm -rf $(OBJDIR)/*.o $(OBJDIR)/components/*.o darkwood-quest.exe
 

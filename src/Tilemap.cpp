@@ -24,11 +24,10 @@ int level[18][32] = {
 };
 
 Tilemap::Tilemap() {
-    // TODO: replace with actual tiles
-    tileTextures.insert(std::make_pair(1, TextureManager::getTexture("assets/temp_tiles/dirt.png", Game::renderer)));
-    tileTextures.insert(std::make_pair(2, TextureManager::getTexture("assets/temp_tiles/dirt_c.png", Game::renderer)));
-    tileTextures.insert(std::make_pair(3, TextureManager::getTexture("assets/temp_tiles/dirt_l.png", Game::renderer)));
-    tileTextures.insert(std::make_pair(4, TextureManager::getTexture("assets/temp_tiles/dirt_r.png", Game::renderer)));
+    tileTextures.insert(std::make_pair(1, TextureManager::getTexture("assets/temp_tiles/dirt.png")));
+    tileTextures.insert(std::make_pair(2, TextureManager::getTexture("assets/temp_tiles/dirt_c.png")));
+    tileTextures.insert(std::make_pair(3, TextureManager::getTexture("assets/temp_tiles/dirt_l.png")));
+    tileTextures.insert(std::make_pair(4, TextureManager::getTexture("assets/temp_tiles/dirt_r.png")));
 }
 
 Tilemap::~Tilemap() {}

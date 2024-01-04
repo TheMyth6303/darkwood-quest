@@ -1,3 +1,4 @@
+#include <Game.h>
 #include <TextureManager.h>
 
 std::unordered_map<const char *, SDL_Texture *> TextureManager::textures;
@@ -8,10 +9,10 @@ TextureManager &TextureManager::operator=(const TextureManager &) { return *this
 
 TextureManager::TextureManager() {}
 
-SDL_Texture *TextureManager::getTexture(const char *filepath, SDL_Renderer *renderer) {
+SDL_Texture *TextureManager::getTexture(const char *filepath) {
     if (textures.count(filepath) == 0) {
         SDL_Surface *surface = IMG_Load(filepath);
-        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(Game::renderer, surface);
         SDL_FreeSurface(surface);
         std::cout << "Created texture: " << filepath << std::endl;
         textures.insert(std::make_pair(filepath, texture));

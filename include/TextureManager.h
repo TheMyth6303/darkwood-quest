@@ -14,7 +14,7 @@ class TextureManager {
         static std::unordered_map<const char *, SDL_Texture *> textures;
 
     public:
-        static SDL_Texture *getTexture(const char *filepath, SDL_Renderer *renderer);
+        static SDL_Texture *getTexture(const char *filepath);
         static void destroyTextures();
 };
 

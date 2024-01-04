@@ -20,8 +20,9 @@ class Component {
         Entity *entity;
         Component() {}
         ~Component() {}
-        virtual void init() {}
         virtual void update() {}
+        virtual void render() {}
+        virtual void init() {}
 };
 
 inline ComponentID generateComponentID() {
@@ -38,12 +39,16 @@ class Entity {
         bool active = true;
         ComponentBitSet componentBitSet;
         ComponentArray componentArray;
+        std::vector<std::unique_ptr<Component>> components;
 
     public:
         Entity() {}
         ~Entity() {}
-        template <typename T> T &addComponent() {
-            T *c = new T();
+        template <typename T, typename... TArgs> T &addComponent(TArgs &&...mArgs) {
+            T *c = new T(std::forward<TArgs>(mArgs)...);
+            std::unique_ptr<Component> uPtr{c};
+            components.emplace_back(std::move(uPtr));
+            c->entity = this;
             ComponentID id = getComponentID<T>();
             componentBitSet.set(id, true);
             componentArray[id] = c;
@@ -56,16 +61,18 @@ class Entity {
             return *static_cast<T *>(ptr);
         }
         void update() {
-            for (std::size_t i = 0; i < maxComponents; i++) {
-                if (componentBitSet[i]) {
-                    componentArray[i]->update();
-                }
+            for (auto &c : components) {
+                c->update();
             }
         }
 
         bool isActive() { return active; }
         void destroy() { active = false; }
-        void render() {}
+        void render() {
+            for (auto &c : components) {
+                c->render();
+            }
+        }
 };
 
 class Manager {
