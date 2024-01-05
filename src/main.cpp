@@ -4,7 +4,7 @@
 #include <vector>
 
 const int WIDTH = 960, HEIGHT = 540;
-const int FPS = 10;
+const int FPS = 24;
 Game *game = nullptr;
 
 int main(int argc, char *argv[]) {

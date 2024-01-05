@@ -7,8 +7,11 @@ class PositionComponent : public Component {
     private:
         int xpos;
         int ypos;
+        int speed;
 
     public:
+        int xVelocity;
+        int yVelocity;
         PositionComponent();
         PositionComponent(int x, int y);
         int x();

@@ -3,10 +3,16 @@
 PositionComponent::PositionComponent() {
     xpos = 0;
     ypos = 0;
+    xVelocity = 0;
+    yVelocity = 0;
+    speed = 5;
 }
 PositionComponent::PositionComponent(int x, int y) {
     xpos = x;
     ypos = y;
+    xVelocity = 0;
+    yVelocity = 0;
+    speed = 5;
 }
 
 int PositionComponent::x() { return xpos; }
@@ -18,6 +24,6 @@ void PositionComponent::setPos(int x, int y) {
 }
 
 void PositionComponent::update() {
-    xpos++;
-    ypos++;
+    xpos += xVelocity * speed;
+    ypos += yVelocity * speed;
 }

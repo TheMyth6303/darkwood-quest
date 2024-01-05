@@ -7,6 +7,7 @@
 
 SDL_Window *Game::window = nullptr;
 SDL_Renderer *Game::renderer = nullptr;
+SDL_Event Game::event;
 
 Manager manager;
 Entity &player = manager.addEntity();
@@ -42,14 +43,13 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     player.addComponent<PositionComponent>(30, 30);
     player.addComponent<SpriteComponent>("assets/temp_tiles/dirt.png");
+    player.addComponent<ControlComponent>();
 }
 
 void Game::handleEvents() {
-    SDL_Event event;
-    while (SDL_PollEvent(&event) > 0) {
-        if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
-            isRunning = false;
-        }
+    SDL_PollEvent(&event);
+    if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+        isRunning = false;
     }
 };
 
